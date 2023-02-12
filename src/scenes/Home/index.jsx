@@ -20,16 +20,20 @@ const Home = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        const response = await fetch(process.env.VITE_API_SHARE, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        if (import.meta.env.VITE_API_SHARE) {
+          const response = await fetch(import.meta.env.VITE_API_SHARE, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
 
-        if (response.ok) {
-          const result = await response.json();
-          setAllPosts(result.data.reverse());
+          if (response.ok) {
+            const result = await response.json();
+            setAllPosts(result.data.reverse());
+          }
+        } else {
+          throw new Error("VITE_API_SHARE environment variable is not defined");
         }
       } catch (error) {
         console.log(error);
