@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
     name: "",
     prompt: "",
@@ -19,14 +18,57 @@ const Create = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    console.log(form);
+    e.preventDefault();
+    if (form.prompt && form.photo) {
+      setLoading(true);
+      try {
+        const response = await fetch(import.meta.env.VITE_API_SHARE, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+        await response.json();
+        navigate("/");
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert("Please enter a prompt and generate an image");
+    }
+  };
 
   const handleSurpriseMe = () => {
     const randomPrompt = getRandomPrompt(form.prompt);
     setForm({ ...form, prompt: randomPrompt });
   };
 
-  const generateImage = () => {};
+  const generateImage = async () => {
+    if (form.prompt) {
+      try {
+        setGeneratingImg(true);
+        const response = await fetch(import.meta.env.VITE_API_DALLE, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt: form.prompt }),
+        });
+
+        const data = await response.json();
+        setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setGeneratingImg(false);
+      }
+    } else alert("Please enter a prompt");
+  };
 
   return (
     <section className="max-w-7xl mx-auto">
@@ -37,7 +79,7 @@ const Create = () => {
           share them with the community
         </p>
       </div>
-      <form className="mt-16  max-w-3xl">
+      <form onSubmit={handleSubmit} className="mt-16  max-w-3xl">
         <div className="flex flex-col gap-5">
           <FormField
             labelName="Your Name"
