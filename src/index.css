@@ -13,23 +13,126 @@
   }
 }
 
-.prompt::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 5px;
 }
-
-.prompt::-webkit-scrollbar-thumb {
-  background-color: #666e75;
-  border-radius: 5px;
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #21295c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6870fa;
+}
+::-webkit-scrollbar-track {
+  background: black;
 }
 
-.slide {
+/* BUTTON GENERATOR */
+#btn-generator {
+  color: white;
+  outline: none;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: all ease 0.3s;
+  text-decoration: none;
+  font-size: 1rem;
+
+  --borderWidth: 1px;
+  position: relative;
+  border-radius: calc(12 * var(--borderWidth));
+  background: linear-gradient(
+    45deg,
+    #000d09,
+    #000000,
+    #100000,
+    #1c0306,
+    #02051c,
+    #1c0902,
+    #031208
+  );
+  background-size: 200% 300%;
+
+  -webkit-animation: AnimationName 9s ease infinite;
+  -moz-animation: AnimationName 9s ease infinite;
+  animation: AnimationName 9s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 88% 0%;
+    }
+    50% {
+      background-position: 13% 100%;
+    }
+    100% {
+      background-position: 88% 0%;
+    }
+  }
+  @-moz-keyframes AnimationName {
+    0% {
+      background-position: 88% 0%;
+    }
+    50% {
+      background-position: 13% 100%;
+    }
+    100% {
+      background-position: 88% 0%;
+    }
+  }
+  @keyframes AnimationName {
+    0% {
+      background-position: 88% 0%;
+    }
+    50% {
+      background-position: 13% 100%;
+    }
+    100% {
+      background-position: 88% 0%;
+    }
+  }
+}
+
+#btn-generator:after {
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 2s;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  /* opacity: 0.5; */
+
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  border-radius: calc(12 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 3s ease alternate infinite;
+  background-size: 300% 300%;
 }
 
-.active {
-  opacity: 1;
+@keyframes animatedgradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+#btn-generator:hover:after {
+  filter: brightness(1.5);
 }

@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-10 transition-colors duration-300 ${
-        scroll > 300 ? "bg-white" : "bg-transparent"
+        scroll > 400 ? "bg-white" : "bg-transparent"
       }`}
     >
       <div
@@ -23,12 +23,12 @@ const Navbar = () => {
         <Link to="/">
           <img src={logo} alt="logo" className="w-28 object-contain" />
         </Link>
-        <Link
+        {/* <Link
           to="/create"
           className="font-inter font-medium bg-[#6469ff] text-white px-4 py-2 rounded-md"
         >
           Create
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );
