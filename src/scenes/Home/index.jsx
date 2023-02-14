@@ -20,8 +20,8 @@ const Home = () => {
     const fetchPosts = async () => {
       setLoading(true);
       try {
-        if (import.meta.env.VITE_API_SHARE) {
-          const response = await fetch(import.meta.env.VITE_API_SHARE, {
+        if (import.meta.env.VITE_API_POST) {
+          const response = await fetch(import.meta.env.VITE_API_POST, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const Home = () => {
             setAllPosts(result.data.reverse());
           }
         } else {
-          throw new Error("VITE_API_SHARE environment variable is not defined");
+          throw new Error("VITE_API_POST environment variable is not defined");
         }
       } catch (error) {
         console.log(error);
@@ -63,8 +63,8 @@ const Home = () => {
   };
   return (
     <section>
-      <Slideshow firstThree={allPosts && allPosts.slice(0, 4)} />
-      <div className="sm:p-8 mt-14 px-4 py-8 w-full bg-[#f9fafe] min-h-[calc(100vh-73px)]">
+      <Slideshow firstThree={allPosts && allPosts.slice(0, 3)} />
+      <div className="sm:p-8 mt-14 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
         <div className="max-w-7xl mx-auto">
           <div>
             <h1 className="font-extrabold text-[#222328] text-[32px]">
@@ -107,7 +107,7 @@ const Home = () => {
                     />
                   ) : (
                     <RenderCards
-                      data={allPosts && allPosts.slice(4)}
+                      data={allPosts && allPosts.slice(3)}
                       title="No posts found"
                     />
                   )}

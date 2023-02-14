@@ -1,8 +1,13 @@
 import React from "react";
-import { download } from "../assets";
+import { download, thumbup, thumbdown } from "../assets";
 import { downloadImage } from "../utils";
 
-const Card = ({ _id, name, prompt, photo }) => {
+const Card = ({ _id, name, prompt, photo, disliked, liked }) => {
+  const incLike = (id) => {
+    console.log(liked);
+  };
+  const incDislike = (id) => {};
+
   return (
     <div className="rounded-xl group relative card hover:shadow-xl shadow-card transition duration-300 ease-in-out hover:brightness-110">
       <img
@@ -18,6 +23,32 @@ const Card = ({ _id, name, prompt, photo }) => {
             <div className="w-7 h-7 rounded-full object-cover bg-black flex justify-center items-center text-white text-xs font-bold">
               {name[0]}
             </div>
+            {/* LIKE AND DISLIKE NOT WORKING WITHOUT AN ACCOUNT
+            BECAUSE THEY'LL CLICK MANY TIMES THEY WANT
+            <button
+              type="button"
+              onClick={() => incLike(_id)}
+              className="outline-none bg-transparent border-none"
+            >
+              <img
+                src={thumbup}
+                alt="like"
+                className="w-6 h-6 object-contain invert "
+              />
+              <span className="c-white"> {liked}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => incDislike(_id)}
+              className="outline-none bg-transparent border-none"
+            >
+              <img
+                src={thumbdown}
+                alt="dislike"
+                className="w-6 h-6 object-contain invert "
+              />
+              {disliked}
+            </button> */}
             <p className="text-white text-sm"></p>
           </div>
 

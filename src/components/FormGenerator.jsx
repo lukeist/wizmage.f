@@ -20,7 +20,7 @@ const FormGenerator = ({ form, setForm }) => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch(import.meta.env.VITE_API_SHARE, {
+        const response = await fetch(import.meta.env.VITE_API_POST, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -74,7 +74,7 @@ const FormGenerator = ({ form, setForm }) => {
           onSubmit={handleSubmit}
           className="absolute max-w-3xl z-10"
           style={{
-            top: "45%",
+            top: "70%",
             left: "50%",
             width: isMobile ? "90%" : "50%",
             transform: "translate(-50%, -50%)",
@@ -123,14 +123,14 @@ const FormGenerator = ({ form, setForm }) => {
           }
         >
           <div
-            className="flex flex-col gap-5"
+            className={`flex flex-col gap-5 ${isMobile ? "" : "mr-20"}`}
             style={isMobile ? { width: "90%" } : {}}
           >
             <FormField
               labelName="Your Name"
               type="text"
               name="name"
-              placeholder="John Wick"
+              placeholder="Your Name"
               value={form.name}
               handleChange={handleChange}
             />
@@ -148,7 +148,7 @@ const FormGenerator = ({ form, setForm }) => {
             <div
               className={`${
                 isMobile ? "" : "w-80 h-80"
-              }relative bg-gray-50 border border-gray-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3 flex justify-center items-center`}
+              } relative bg-gray-50 border border-gray-300 text-white-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3 flex justify-center items-center`}
             >
               {form.photo ? (
                 <img
@@ -173,13 +173,13 @@ const FormGenerator = ({ form, setForm }) => {
           </div>
 
           <div
-            className="mt-5 flex gap-2"
+            className="mt-5 flex gap-3"
             style={isMobile ? { width: "90%" } : {}}
           >
             <button
               type="button"
               onClick={generateImage}
-              className="text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+              className="w-full text-white bg-green-700 font-medium rounded-md text-sm sm:w-auto px-10 py-2.5 text-center"
             >
               {generatingImg
                 ? "Generating..."
@@ -192,22 +192,19 @@ const FormGenerator = ({ form, setForm }) => {
               : form.photo && (
                   <button
                     type="button"
-                    onClick={
-                      () =>
-                        downloadImage(
-                          Math.floor(new Date().getTime() / 1000),
-                          form.photo
-                        )
-                      // console.log(form)
+                    onClick={() =>
+                      downloadImage(
+                        Math.floor(new Date().getTime() / 1000),
+                        form.photo
+                      )
                     }
-                    className="text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                    className="w-full text-white bg-green-700 font-medium rounded-md text-sm sm:w-auto px-7 py-2.5 text-center"
                   >
                     Download
                   </button>
                 )}
           </div>
           <div className="mt-10" style={isMobile ? { width: "90%" } : {}}>
-            {/* text-[#666e75] */}
             <p className="mt-2 text-white text-[14px]">
               Once you have created the image you want, you can share it with
               others in the community

@@ -38,16 +38,18 @@ const FormField = ({
           value={value}
           onChange={handleChange}
           required
-          className="bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#4649ff] outline-none block w-full p-3 pr-28 transition duration-300 ease-in-out hover:shadow-xl focus:shadow-lg active:shadow-md"
+          style={{ maxWidth: "100%" }}
+          className="w-full p-3 pr-28 bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#4649ff] outline-none block transition duration-300 ease-in-out hover:shadow-xl focus:shadow-lg active:shadow-md"
         />
-        <div className="absolute right-0 top-0 mr-3 mt-2">
+        <div className="absolute right-0 top-0 mr-3 mt-2.5">
           {isSurpriseMe && (
             <button
               type="button"
               onClick={handleSurpriseMe}
-              className="hover:text-red-500 focus:text-red-500 active:text-red-500 font-semibold text-xs py-1 px-2 rounded-[5x] text-black"
+              className="flex gap-2 justify-center items-center hover:text-[#ff0080] focus:text-[#ff0080] active:text-[#ff0080] font-semibold text-xs py-1 px-2 rounded-[5x] text-black"
             >
-              Surprise me!
+              <div className="w-2 h-2 rounded-full bg-pink-500 animate-neon-pulse animate-neon animate-pulse"></div>
+              <span>Surprise me!</span>
             </button>
           )}
         </div>

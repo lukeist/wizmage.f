@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { logo } from "../assets";
-
+import { logoSkizzenHaus } from "../assets";
 const Navbar = () => {
   const [scroll, setScroll] = useState(0);
 
@@ -13,6 +12,7 @@ const Navbar = () => {
 
   return (
     <nav
+      id="nav"
       className={`fixed top-0 w-full z-10 transition-colors duration-300 ${
         scroll > 400 ? "bg-white" : "bg-transparent"
       }`}
@@ -21,7 +21,11 @@ const Navbar = () => {
         className={`w-full flex justify-between items-center sm:px-8 px-4 py-3`}
       >
         <Link to="/">
-          <img src={logo} alt="logo" className="w-28 object-contain" />
+          <img
+            src={logoSkizzenHaus}
+            alt="logo"
+            className="w-10 object-contain"
+          />
         </Link>
         {/* <Link
           to="/create"
