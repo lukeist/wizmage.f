@@ -26,7 +26,7 @@ const Slideshow = ({ firstThree }) => {
 
   return (
     <div
-      className="relative flex flex-col w-full overflow-hidden bg-black h-screen"
+      className="relative flex flex-col w-full overflow-hidden bg-black h-screen z-1"
       // style={{
       //   height: isMobile ? undefined : "100vh",
       // }}
@@ -36,7 +36,7 @@ const Slideshow = ({ firstThree }) => {
       {form.photo ? (
         <img
           // className="object-cover absolute top-0 left-0"
-          className="object-cover"
+          className="z-1 object-cover"
           style={{
             height: "100vh",
           }}
@@ -48,7 +48,7 @@ const Slideshow = ({ firstThree }) => {
         firstThree.map((item, index) => (
           <div key={index}>
             <img
-              className={`object-cover absolute top-0 left-0  ${
+              className={`z-1 object-cover absolute top-0 left-0  ${
                 index === currentIndex ? "opacity-100" : "opacity-0"
               }`}
               style={{

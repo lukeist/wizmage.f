@@ -39,7 +39,7 @@ const FormField = ({
           onChange={handleChange}
           required
           style={{ maxWidth: "100%" }}
-          className="w-full p-3 pr-28 bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#6469ff] focus:border-[#4649ff] outline-none block transition duration-300 ease-in-out hover:shadow-xl focus:shadow-lg active:shadow-md"
+          className="w-full p-3 pr-28 bg-gray-50 border-gray-300 text-gray-900 text-sm rounded-md focus:ring-[#6469ff] focus:border-[#4649ff] outline-none block transition duration-300 ease-in-out hover:shadow-xl focus:shadow-lg active:shadow-md"
         />
         <div className="absolute right-0 top-0 mr-3 mt-2.5">
           {isSurpriseMe && (

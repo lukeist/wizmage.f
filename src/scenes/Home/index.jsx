@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormField, Card, Loader, Slideshow } from "../../components";
 
 const RenderCards = ({ data, title }) => {
@@ -61,11 +61,42 @@ const Home = () => {
       }, 500)
     );
   };
+
+  const bgRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const bg = bgRef.current;
+      const content = contentRef.current;
+
+      if (bg && content) {
+        bg.style.transform = `translateY(-${scrollTop * 0.2}px)`;
+        content.style.transform = `translateY(-${scrollTop * 0.8}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <section>
-      <Slideshow firstThree={allPosts && allPosts.slice(0, 3)} />
-      <div className="sm:p-8 mt-14 px-4 py-8 w-full min-h-[calc(100vh-73px)]">
-        <div className="max-w-7xl mx-auto">
+    <section className="parallax-container">
+      <div ref={bgRef} className="parallax-bg">
+        <Slideshow firstThree={allPosts && allPosts.slice(0, 3)} />
+      </div>
+      <div
+        ref={contentRef}
+        className="parallax-content absolute z-10 sm:p-8 px-4 py-8 pt-14 w-full min-h-[calc(100vh-73px)]"
+        style={{
+          boxShadow: "0 0 50px rgba(0, 0, 0, 0.5)",
+        }}
+      >
+        <div className="max-w-7xl mx-auto mt-20">
           <div>
             <h1 className="font-extrabold text-[#222328] text-[32px]">
               The Community Showcase

@@ -95,8 +95,7 @@ const FormGenerator = ({ form, setForm }) => {
               <button
                 type="button"
                 onClick={generateImage}
-                id="btn-generator"
-                className={isMobile ? `w-2/4` : `w-1/4`}
+                className={`btn-generator p-2 ${isMobile ? "w-2/4" : "w-1/4"}`}
               >
                 {generatingImg
                   ? "Generating..."
@@ -112,7 +111,7 @@ const FormGenerator = ({ form, setForm }) => {
           onSubmit={handleSubmit}
           className={`${
             isMobile ? "ml-0 items-center bg-black opacity-90" : "ml-14"
-          } absolute flex flex-col justify-center mt-0 max-w-3xl z-10 h-screen`}
+          } absolute flex flex-col justify-center mt-0 max-w-3xl h-screen z-10`}
           style={
             isMobile
               ? {}
@@ -179,7 +178,7 @@ const FormGenerator = ({ form, setForm }) => {
             <button
               type="button"
               onClick={generateImage}
-              className="w-full text-white bg-green-700 font-medium rounded-md text-sm sm:w-auto px-10 py-2.5 text-center"
+              className="btn-generator w-full text-white font-medium rounded-md text-sm sm:w-auto px-10 py-2.5 text-center"
             >
               {generatingImg
                 ? "Generating..."
@@ -198,7 +197,7 @@ const FormGenerator = ({ form, setForm }) => {
                         form.photo
                       )
                     }
-                    className="w-full text-white bg-green-700 font-medium rounded-md text-sm sm:w-auto px-7 py-2.5 text-center"
+                    className="w-full text-white bg-black font-medium rounded-md text-sm sm:w-auto px-7 py-2.5 text-center"
                   >
                     Download
                   </button>
