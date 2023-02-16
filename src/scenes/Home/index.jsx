@@ -21,8 +21,10 @@ const Home = () => {
   // Set current language for based on user's location
   useEffect(() => {
     const userLocale = navigator.language.split("-")[0];
-    setLocale(userLocale in translations ? userLocale : "en");
+    // setLocale(userLocale in translations ? userLocale : "vi");
+    setLocale("vi");
   }, []);
+
   const currentLanguage = translations[locale];
 
   useEffect(() => {
