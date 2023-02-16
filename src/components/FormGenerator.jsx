@@ -135,6 +135,7 @@ const FormGenerator = ({ currentLanguage, form, setForm }) => {
               handleChange={handleChange}
             />
             <FormField
+              btnName={currentLanguage.btnSurpriseMe}
               labelName="Prompt"
               type="text"
               name="prompt"
