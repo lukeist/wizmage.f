@@ -3,7 +3,7 @@ import { download } from "../assets";
 import { downloadImage } from "../utils";
 import FormGenerator from "./FormGenerator";
 
-const Slideshow = ({ firstThree }) => {
+const Slideshow = ({ currentLanguage, firstThree }) => {
   const isMobile = window.innerWidth < 600;
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -31,7 +31,11 @@ const Slideshow = ({ firstThree }) => {
       //   height: isMobile ? undefined : "100vh",
       // }}
     >
-      <FormGenerator form={form} setForm={setForm} />
+      <FormGenerator
+        currentLanguage={currentLanguage}
+        form={form}
+        setForm={setForm}
+      />
 
       {form.photo ? (
         <img

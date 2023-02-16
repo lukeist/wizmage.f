@@ -4,7 +4,7 @@ import { downloadImage, getRandomPrompt } from "../utils";
 import { FormField, Loader } from "../components";
 // import { useNavigate } from "react-router-dom";
 
-const FormGenerator = ({ form, setForm }) => {
+const FormGenerator = ({ currentLanguage, form, setForm }) => {
   // const navigate = useNavigate();
   const isMobile = window.innerWidth < 600;
 
@@ -64,7 +64,7 @@ const FormGenerator = ({ form, setForm }) => {
       } finally {
         setGeneratingImg(false);
       }
-    } else alert("Please enter a prompt");
+    } else alert(`${currentLanguage.txtPleaseEnterAPrrompt}`);
   };
 
   return (
@@ -83,6 +83,7 @@ const FormGenerator = ({ form, setForm }) => {
           <div className="flex flex-col gap-3" style={{ height: "60px" }}>
             <FormField
               // labelName="Prompt"
+              btnName={currentLanguage.btnSurpriseMe}
               type="text"
               name="prompt"
               placeholder="an oil painting portrait of a capybara wearing medieval royal robes and an ornate crown on a dark background"
@@ -98,10 +99,10 @@ const FormGenerator = ({ form, setForm }) => {
                 className={`btn-generator p-2 ${isMobile ? "w-2/4" : "w-1/4"}`}
               >
                 {generatingImg
-                  ? "Generating..."
+                  ? currentLanguage.btnGenerating
                   : form.photo
-                  ? "Generate Again"
-                  : "Generate"}
+                  ? currentLanguage.btnGenerateAgain
+                  : currentLanguage.btnGenerate}
               </button>
             </div>
           </div>
@@ -126,10 +127,10 @@ const FormGenerator = ({ form, setForm }) => {
             style={isMobile ? { width: "90%" } : {}}
           >
             <FormField
-              labelName="Your Name"
+              labelName={currentLanguage.placeholderName}
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder={currentLanguage.placeholderName}
               value={form.name}
               handleChange={handleChange}
             />
@@ -137,7 +138,7 @@ const FormGenerator = ({ form, setForm }) => {
               labelName="Prompt"
               type="text"
               name="prompt"
-              placeholder="an oil painting portrait of a capybara wearing medieval royal robes and an ornate crown on a dark background"
+              placeholder={currentLanguage.placeholderPrompt}
               value={form.prompt}
               handleChange={handleChange}
               isSurpriseMe
@@ -181,10 +182,10 @@ const FormGenerator = ({ form, setForm }) => {
               className="btn-generator w-full text-white font-medium rounded-md text-sm sm:w-auto px-10 py-2.5 text-center"
             >
               {generatingImg
-                ? "Generating..."
+                ? currentLanguage.btnGenerating
                 : form.photo
-                ? "Generate Again"
-                : "Generate"}
+                ? currentLanguage.btnGenerateAgain
+                : currentLanguage.btnGenerate}
             </button>
             {generatingImg
               ? undefined
@@ -199,21 +200,22 @@ const FormGenerator = ({ form, setForm }) => {
                     }
                     className="w-full text-white bg-black font-medium rounded-md text-sm sm:w-auto px-7 py-2.5 text-center"
                   >
-                    Download
+                    {currentLanguage.btnDownload}
                   </button>
                 )}
           </div>
           <div className="mt-10" style={isMobile ? { width: "90%" } : {}}>
             <p className="mt-2 text-white text-[14px]">
-              Once you have created the image you want, you can share it with
-              others in the community
+              {currentLanguage.txtSharePost}
             </p>
 
             <button
               type="submit"
               className="mt-3 text-white bg-[#6469ff] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
-              {loading ? "Sharing..." : "Share with the community"}
+              {loading
+                ? currentLanguage.btnSharing
+                : currentLanguage.btnSharePost}
             </button>
           </div>
         </form>
