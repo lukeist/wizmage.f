@@ -19,7 +19,7 @@
     "txtPleaseEnterAPrrompt": "Please enter a prompt"
   },
   "vi": {
-    "btnSurpriseMe": "Chọn ngẫu nhiên!",
+    "btnSurpriseMe": "Gợi ý!",
     "btnGenerate": "Tạo ảnh",
     "btnGenerating": "Đang tạo ảnh...",
     "btnGenerateAgain": "Tạo lại ảnh",
@@ -29,12 +29,12 @@
     "txtSharePost": "Khi đã tạo được bức ảnh bạn yêu thích, hãy chia sẻ nó với cộng đồng của chúng ta!",
     "placeholderName": "Tên của bạn",
     "placeholderPrompt": "chó Shiba Inu nằm phơi nắng theo phong cách của Johannes Vermeer",
-    "placeholderSearchPost": "Tìm kiếm bài viết",
+    "placeholderSearchPost": "Tìm kiếm hình ảnh",
     "txtCommunityShowcase": "Danh mục tuyệt phẩm của cộng đồng",
     "txtSearchResults": "Kết quả tìm kiếm cho ",
     "txtCommunityShowcaseSub": "Khám phá bộ sưu tập những bức ảnh tuyệt đẹp và đầy sáng tạo được tạo ra bởi trí tuệ nhân tạo,",
     "txtNoSearchResultsFound": "Không tìm thấy kết quả tìm kiếm",
-    "txtNoPostsFound": "Không có bài viết nào",
+    "txtNoPostsFound": "Không có hình ảnh nào",
     "txtPleaseEnterAPrrompt": "Vui lòng nhập một đề bài"
   },
   "de": {
