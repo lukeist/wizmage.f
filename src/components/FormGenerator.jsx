@@ -86,7 +86,7 @@ const FormGenerator = ({ currentLanguage, form, setForm }) => {
               btnName={currentLanguage.btnSurpriseMe}
               type="text"
               name="prompt"
-              placeholder="an oil painting portrait of a capybara wearing medieval royal robes and an ornate crown on a dark background"
+              placeholder={currentLanguage.placeholderPrompt}
               value={form.prompt}
               handleChange={handleChange}
               isSurpriseMe
