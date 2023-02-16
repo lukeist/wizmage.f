@@ -12,17 +12,6 @@ const Slideshow = ({ currentLanguage, firstThree }) => {
     prompt: "",
     photo: "",
   });
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentIndex(
-        firstThree ? Math.floor(Math.random() * firstThree.length) : 0
-      );
-    }, 5000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
 
   return (
     <div
@@ -51,7 +40,7 @@ const Slideshow = ({ currentLanguage, firstThree }) => {
         firstThree &&
         firstThree.map((item, index) => (
           <div key={index}>
-            <img
+            {/* <img
               className={`z-1 object-cover absolute top-0 left-0  ${
                 index === currentIndex ? "opacity-100" : "opacity-0"
               }`}
@@ -62,7 +51,18 @@ const Slideshow = ({ currentLanguage, firstThree }) => {
               }}
               src={item.photo}
               alt={item.alt}
-            />
+            /> */}
+            <div
+              id={`slide${index}`}
+              className={`slidebox absolute top-0 left-0  ${
+                index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+              style={{
+                height: "100vh",
+                width: "100%",
+                backgroundImage: `url(${item.photo})`,
+              }}
+            ></div>
             <div
               className={`flex flex-col items-end object-cover absolute top-0 left-0 ${
                 index === currentIndex ? "opacity-100" : "opacity-0"
