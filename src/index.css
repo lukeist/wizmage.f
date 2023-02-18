@@ -233,20 +233,19 @@ body {
 
 #slide1 {
   z-index: 3;
-  /* animation: xfade1 21s infinite; */
-  animation: xfade 30s -0s infinite;
+  animation: xfade 30s -21s infinite;
   animation-timing-function: ease-in-out;
 }
 
 #slide2 {
   z-index: 2;
-  animation: xfade 30s -10s infinite;
+  animation: xfade 30s -12s infinite;
   animation-timing-function: ease-in-out;
 }
 
 #slide3 {
   z-index: 1;
-  animation: xfade 30s -20s infinite;
+  animation: xfade 30s -2s infinite;
   animation-timing-function: ease-in-out;
 }
 
@@ -254,20 +253,19 @@ body {
   0% {
     opacity: 0;
   }
-  5% {
+  8.33% {
     opacity: 1;
   }
-  33% {
+  33.33% {
     opacity: 1;
   }
-  53% {
+  41.66% {
     opacity: 0;
   }
   100% {
     opacity: 0;
   }
 }
-
 /* #slides-container {
   position: relative;
   display: inline-block;

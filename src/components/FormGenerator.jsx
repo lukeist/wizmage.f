@@ -28,8 +28,15 @@ const FormGenerator = ({ currentLanguage, form, setForm }) => {
           body: JSON.stringify(form),
         });
         await response.json();
+        // setForm({
+        //   name: "",
+        //   prompt: "",
+        //   photo: "",
+        // });
+        location.href = window.location.href;
         // navigate("/");
-        window.location.reload();
+
+        // window.location.reload();
       } catch (error) {
         console.log(error);
       } finally {

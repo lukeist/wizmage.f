@@ -24,6 +24,7 @@ const Navbar = () => {
         >
           <Link to="/">
             <img
+              onClick={() => window.location.reload()}
               src={logoSkizzenHaus}
               alt="logo"
               className="w-10 object-contain"
