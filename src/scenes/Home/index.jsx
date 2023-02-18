@@ -18,13 +18,16 @@ const Home = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [locale, setLocale] = useState("en");
 
-  // Set current language for based on user's location
+  // Set current language for based on user's browser
+  const checkBrowserLanguage = () => {
+    const browserLanguage = navigator.language;
+    browserLanguage.startsWith("vi") && setLocale("vi");
+    browserLanguage.startsWith("de") && setLocale("de");
+    browserLanguage.startsWith("en") && setLocale("en");
+  };
   useEffect(() => {
-    const userLocale = navigator.language.split("-")[0];
-    // setLocale(userLocale in translations ? userLocale : "vi");
-    setLocale("vi");
+    checkBrowserLanguage();
   }, []);
-
   const currentLanguage = translations[locale];
 
   useEffect(() => {
