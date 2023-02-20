@@ -2,14 +2,17 @@ import React from "react";
 import { download, thumbup, thumbdown } from "../assets";
 import { downloadImage } from "../utils";
 
+// const Card = React.forwardRef(
+// ({ _id, name, prompt, photo, disliked, liked }, ref) => {
 const Card = ({ _id, name, prompt, photo, disliked, liked }) => {
-  const incLike = (id) => {
-    console.log(liked);
-  };
+  const incLike = (id) => {};
   const incDislike = (id) => {};
 
   return (
-    <div className="rounded-xl group relative card hover:shadow-xl shadow-card transition duration-300 ease-in-out hover:brightness-110">
+    <div
+      ref={ref}
+      className="rounded-xl group relative card hover:shadow-xl shadow-card transition duration-300 ease-in-out hover:brightness-110"
+    >
       <img
         className="w-full h-auto object-cover rounded-xl"
         src={photo}
@@ -68,5 +71,8 @@ const Card = ({ _id, name, prompt, photo, disliked, liked }) => {
     </div>
   );
 };
+// );
+
+// export default React.memo(Card);
 
 export default Card;

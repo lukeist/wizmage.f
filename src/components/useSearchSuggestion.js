@@ -46,7 +46,7 @@ class Trie {
 }
 
 // first run
-const searchSuggestion = (words, searchWord) => {
+const useSearchSuggestion = (words, searchWord) => {
   const trie = new Trie();
   for (let w of words) {
     trie.insert(w);
