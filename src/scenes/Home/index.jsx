@@ -44,7 +44,7 @@ const Home = () => {
     // setLoading(true);
     try {
       // set limit for lazy loading
-      const limit = 6;
+      const limit = 40;
       const url = `${
         import.meta.env.VITE_API_POST
       }?page=${page}&limit=${limit}`;
