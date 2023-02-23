@@ -75,7 +75,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    console.log("useEffect loading once");
     fetchPosts(currentPage);
   }, []);
 

@@ -9,10 +9,7 @@ const Card = ({ _id, name, prompt, photo, disliked, liked }) => {
   const incDislike = (id) => {};
 
   return (
-    <div
-      ref={ref}
-      className="rounded-xl group relative card hover:shadow-xl shadow-card transition duration-300 ease-in-out hover:brightness-110"
-    >
+    <div className="rounded-xl group relative card hover:shadow-xl shadow-card transition duration-300 ease-in-out hover:brightness-110">
       <img
         className="w-full h-auto object-cover rounded-xl"
         src={photo}
