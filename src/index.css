@@ -222,7 +222,8 @@ body {
 }
 
 /* slideshow */
-.slidebox {
+
+/* .slidebox {
   display: flex;
   align-items: center;
   height: 100%;
@@ -232,13 +233,13 @@ body {
 }
 
 #slide1 {
-  z-index: 3;
+  z-index: 1;
   animation: xfade 30s -21s infinite;
   animation-timing-function: ease-in-out;
 }
 
 #slide2 {
-  z-index: 2;
+  z-index: 1;
   animation: xfade 30s -12s infinite;
   animation-timing-function: ease-in-out;
 }
@@ -265,7 +266,7 @@ body {
   100% {
     opacity: 0;
   }
-}
+} */
 /* #slides-container {
   position: relative;
   display: inline-block;

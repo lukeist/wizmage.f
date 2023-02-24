@@ -79,7 +79,7 @@ const FormGenerator = ({ currentLanguage, form, setForm }) => {
       {!form.photo ? (
         <form
           onSubmit={handleSubmit}
-          className="absolute max-w-3xl z-10"
+          className="absolute max-w-3xl z-30"
           style={{
             top: "70%",
             left: "50%",
@@ -119,7 +119,7 @@ const FormGenerator = ({ currentLanguage, form, setForm }) => {
           onSubmit={handleSubmit}
           className={`${
             isMobile ? "ml-0 items-center bg-black opacity-90" : "ml-14"
-          } absolute flex flex-col justify-center mt-0 max-w-3xl h-screen z-10`}
+          } absolute flex flex-col justify-center mt-0 max-w-3xl h-screen z-30`}
           style={
             isMobile
               ? {}

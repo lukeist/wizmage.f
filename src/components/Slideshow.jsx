@@ -12,6 +12,17 @@ const Slideshow = ({ currentLanguage, firstThree }) => {
     photo: "",
   });
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      firstThree.length &&
+        setCurrentIndex(
+          (currentIndex) => (currentIndex + 1) % firstThree.length
+        );
+    }, 9000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, firstThree.length]);
+
   return (
     <div
       className="relative flex flex-col w-full overflow-hidden bg-black h-screen z-1"
@@ -25,64 +36,49 @@ const Slideshow = ({ currentLanguage, firstThree }) => {
         setForm={setForm}
       />
 
-      {form.photo ? (
-        <img
-          // className="object-cover absolute top-0 left-0"
-          className="z-1 object-cover"
-          style={{
-            height: "100vh",
-          }}
-          src={form.photo}
-          alt={form.prompt}
-        />
-      ) : (
-        firstThree &&
-        firstThree.map((item, index) => (
-          <div key={index}>
+      {firstThree.map((item, index) => (
+        <div
+          key={index}
+          className={`${
+            index === currentIndex ? "z-20 opacity-100" : "z-0 opacity-0"
+          } transition-opacity duration-1000 ease-in-out absolute top-0 left-0 w-full`}
+          id={`slide${index}`}
+        >
+          <img
+            src={item.photo}
+            alt=""
+            className="w-full h-screen object-cover"
+          />
+          {!form.photo && (
             <div
-              id={`slide${index}`}
-              className={`slidebox absolute top-0 left-0  ${
-                index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
+              className={`flex flex-col items-end absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2`}
               style={{
-                height: "100vh",
-                width: "100%",
-                backgroundImage: `url(${item.photo})`,
+                width: isMobile ? "90%" : "45%",
               }}
             >
-              <div
-                className={`flex flex-col items-end object-cover absolute top-0 left-0 ${
-                  index === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-                style={{
-                  top: "55%",
-                  left: "50%",
-                  width: isMobile ? "90%" : "45%",
-                  transform: "translate(-50%, -50%)",
-                }}
+              <button
+                type="button"
+                onClick={() => downloadImage(item._id, item.photo)}
+                className={`${
+                  index === currentIndex ? "z-20" : "z-0"
+                } outline-none bg-transparent border-none mb-2`}
               >
-                <button
-                  type="button"
-                  onClick={() => downloadImage(item._id, item.photo)}
-                  className="z-10 outline-none bg-transparent border-none"
-                >
-                  <img
-                    src={download}
-                    alt="download"
-                    className="w-6 h-6 object-contain invert"
-                  />
-                </button>
-                <p
-                  className="text-white italic text-right text-lg text-shadow-2xl"
-                  style={{ textShadow: "0 0 3px rgba(0, 0, 0, 0.5)" }}
-                >
-                  {item.prompt.toLowerCase()}
-                </p>
-              </div>
+                <img
+                  src={download}
+                  alt="download"
+                  className="w-6 h-6 object-contain invert"
+                />
+              </button>
+              <p
+                className={`text-white italic text-right text-lg text-shadow-2xl z-10`}
+                style={{ textShadow: "0 0 3px rgba(0, 0, 0, 0.5)" }}
+              >
+                {item.prompt.toLowerCase()}
+              </p>
             </div>
-          </div>
-        ))
-      )}
+          )}
+        </div>
+      ))}
     </div>
   );
 };
